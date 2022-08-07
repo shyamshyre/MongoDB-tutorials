@@ -33,7 +33,7 @@ $set
 $inc
 $unset
 
-Comparison Operator:
+Comparison Query Operator:
 $eq:Equals
 $ne: Not equals
 $lt :Lesser than
@@ -42,8 +42,30 @@ $lte: Less than equal's.
 $gte: Greater than equals.
 
 Logical Operators
-$and
-$or
+$and: returns data matching all the clauses.
+$or : returns data matching either one of the clause.
+{<operator>:[{statement1}:{statement},...{statementn}]}
+$nor: returns data that match both the clauses. 
+$not : negates the query requirement
+{$not:{statement}}
+
+Examples:
+Find all the trips whose duration is less than 70 seconds and type is not equal to Subscriber.
+db.trips.find({"tripduration":{$lte:70},"usertype":{$ne:"Subscriber"}})
+
+find the population in zip's collection whose ppopulation count is less than 1000.
+db.zips.find({"pop":{$lt:1000}}).count()
+
+Nor Example:  
+{$nor:[{"result":"No Violation Issued"},{"result":"Violation Issued"},{"result":"Fail"},{"result":"Warning"}]}
+  
+Find all the student id's from grades collection whosr student id's are greater than 25 and less than 100
+db.grades.find({$and:[{"student_id":{$gt:25}},{"student_id":{$lt:100}}]})
+Since we are performing and query on same field we can simplify it as a follows.
+db.grades.find({"student_id":{$gt:25,$lt:100}})
+ 
+
+
 
 
 
