@@ -34,10 +34,16 @@ $inc
 $unset
 
 Comparison Operator:
-$eq:
-$neq;
-$lt
-$gt
+$eq:Equals
+$ne: Not equals
+$lt :Lesser than
+$gt:Greater than
+$lte: Less than equal's.
+$gte: Greater than equals.
+
+Logical Operators
+$and
+$or
 
 
 
