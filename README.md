@@ -94,8 +94,22 @@ MQL syntax vs Aggregation Sysntax:
   {field:{$operator:value}}  
 Expression:
   {$operator:{field:value}}
- 
+
+ Searching an element inside the Array.
+ db.companies.find({"ameneties":["Tv","Internet","Wifi"]})
+ This will search the elements exact element's matching the above order.
   
+ db.companies.find({"ameneties":{$all:["Tv","Internet","Wifi"]}})
+ This will search all the elments without coniderig the order.
+  
+ To limit the array length
+  $size:20
+  
+ The below query maps the search results to 40 + document's with amenities more than 15+ fields Searh string is specified in the array.
+ This is matched to the search criteria specified in the array and results multiple values.
+ Size maps to the length of the fields and display's
+ db.listingsAndReviews.find({amenities:{"$size":10,"$all": ['TV', 'Cable TV', 'Wifi']}}).count()
+
 
 
 
