@@ -66,6 +66,8 @@ db.grades.find({"student_id":{$gt:25,$lt:100}})
  
 Dislplay airplanes CR2,A81 fly against src or desitination airports of KZN 
 {$and:[{$or:[{"src_airport":"KZN"},{"dst_airport":"KZN"}]},{$or:[{"airplane":"CR2"},{"airplane":"A81"}]}]}
+  
+{"result":"Out of Business","sector":"Home Improvement Contractor - 100 sector"}
 
 
 
