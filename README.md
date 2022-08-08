@@ -76,6 +76,26 @@ How many companies in the sample_training.companies dataset were either founded 
 [and] also either have the social category_code [or] web category_code?
  
 db.companies.find({$or:[{$and:[{"founded_year":2004},{$or:[{"category_code":"web"},{"category_code":"social"}]}]},{$and:[{"founded_month":10},{$or:[{"category_code":"web"},{"category_code":"social"}]}]}]})
+  
+  
+$expr:- Expression : allows the aggregation expressions within the query language.
+{$expr:{<expression>}}
+  
+Find the totalnumber of trips where the source and destination points are same and who have reneted bike less than 100 seconds.
+Approach 1 
+
+db.trips.find({$and:[{tripduration:{$lt:100}},{"$expr":{"$eq":["$start station id","$end station id"]}}]}).count()
+  
+Approach 2: 
+
+db.trips.find({$expr:{$and:[{"$gt":["$tripduration:1200]},{$eq:{$$start station id, $end station id}}]})
+
+MQL syntax vs Aggregation Sysntax: 
+  {field:{$operator:value}}  
+Expression:
+  {$operator:{field:value}}
+ 
+  
 
 
 
