@@ -64,6 +64,8 @@ db.grades.find({$and:[{"student_id":{$gt:25}},{"student_id":{$lt:100}}]})
 Since we are performing and query on same field we can simplify it as a follows.
 db.grades.find({"student_id":{$gt:25,$lt:100}})
  
+Dislplay airplanes CR2,A81 fly against src or desitination airports of KZN 
+{$and:[{$or:[{"src_airport":"KZN"},{"dst_airport":"KZN"}]},{$or:[{"airplane":"CR2"},{"airplane":"A81"}]}]}
 
 
 
