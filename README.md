@@ -109,6 +109,10 @@ Expression:
  This is matched to the search criteria specified in the array and results multiple values.
  Size maps to the length of the fields and display's
  db.listingsAndReviews.find({amenities:{"$size":10,"$all": ['TV', 'Cable TV', 'Wifi']}}).count()
+  
+ Find the amenities who value is wifi and find out the only fields roomtype and address columns. 
+ db.listingsAndReviews.find({"amenities":"Wifi"},{"room_type":1,adderss:1})
+ field:1 -> this will act as a projection to diplay the seleced columns.
 
 
 
