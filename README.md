@@ -68,6 +68,14 @@ Dislplay airplanes CR2,A81 fly against src or desitination airports of KZN
 {$and:[{$or:[{"src_airport":"KZN"},{"dst_airport":"KZN"}]},{$or:[{"airplane":"CR2"},{"airplane":"A81"}]}]}
   
 {"result":"Out of Business","sector":"Home Improvement Contractor - 100 sector"}
+  
+
+How many companies in the sample_training.companies dataset were either founded in 2004
+[and] either have the social category_code [or] web category_code,
+[or] were founded in the month of October
+[and] also either have the social category_code [or] web category_code?
+ 
+db.companies.find({$or:[{$and:[{"founded_year":2004},{$or:[{"category_code":"web"},{"category_code":"social"}]}]},{$and:[{"founded_month":10},{$or:[{"category_code":"web"},{"category_code":"social"}]}]}]})
 
 
 
