@@ -113,12 +113,21 @@ $size:20 This will limit the fields to only 20 fields.
  ####  Size maps to the length of the fields and display's
   db.listingsAndReviews.find({amenities:{"$size":10,"$all": ['TV', 'Cable TV', 'Wifi']}}).count()
   
-#### Find the amenities who value is wifi and find out the only fields roomtype and address columns. 
+#### Find the amenities whose value is wifi and find out the only fields roomtype and address columns. 
  db.listingsAndReviews.find({"amenities":"Wifi"},{"room_type":1,adderss:1})
  field:1 -> this will act as a projection to diplay the seleced columns.
 
 # Projection's helps you to find the data fields exclusively inside the collections.
 #### Note: While using projections ensure that you are not 
+## 0- this will disbale the result.
+## 1- this will enable/show the field as apart of the result.
+## 0,1-> We cannout use both 0 and 1 at the same time, We can only use this if we are using id column.
+
+Examples:
+1. db.collection.find({amenities:{''},{field1:1,field2:1,field3:1}})
+2. db.collection.find({amenities:{''},{field1:0,field2:0,field3:0}})
+Exception only in case of id, else we cannot have both 0's and 1 in the same collection.
+3. db.collection.find({amenities:{''},{field1:1,_id:0)
 
 
 
