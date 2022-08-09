@@ -49,7 +49,7 @@ db.pets.drop()
 #### $not : negates the query requirement
 {$not:{statement}}
 
-##Examples:
+# Examples:
 #### Find all the trips whose duration is less than 70 seconds and type is not equal to Subscriber.
 #### db.trips.find({"tripduration":{$lte:70},"usertype":{$ne:"Subscriber"}})
 
@@ -95,26 +95,26 @@ MQL syntax vs Aggregation Sysntax:
 Expression:
   {$operator:{field:value}}
 
- Searching an element inside the Array.
+## Searching an element inside the Array.
  db.companies.find({"ameneties":["Tv","Internet","Wifi"]})
  This will search the elements exact element's matching the above order.
   
  db.companies.find({"ameneties":{$all:["Tv","Internet","Wifi"]}})
  This will search all the elments without coniderig the order.
   
- To limit the array length
+ ## To limit the array length
   $size:20
   
- The below query maps the search results to 40 + document's with amenities more than 15+ fields Searh string is specified in the array.
- This is matched to the search criteria specified in the array and results multiple values.
- Size maps to the length of the fields and display's
- db.listingsAndReviews.find({amenities:{"$size":10,"$all": ['TV', 'Cable TV', 'Wifi']}}).count()
+ #### The below query maps the search results to 40 + document's with amenities more than 15+ fields Searh string is specified in the array.
+ ####  This is matched to the search criteria specified in the array and results multiple values.
+ ####  Size maps to the length of the fields and display's
+**  db.listingsAndReviews.find({amenities:{"$size":10,"$all": ['TV', 'Cable TV', 'Wifi']}}).count()
   
  Find the amenities who value is wifi and find out the only fields roomtype and address columns. 
  db.listingsAndReviews.find({"amenities":"Wifi"},{"room_type":1,adderss:1})
  field:1 -> this will act as a projection to diplay the seleced columns.
 
-## Projection's helps you to find the data fields exclusively inside the collections.
+# Projection's helps you to find the data fields exclusively inside the collections.
 #### Note: While using projections ensure that you are not 
 
 
