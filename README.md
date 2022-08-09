@@ -90,27 +90,30 @@ Approach 2:
 
 db.trips.find({$expr:{$and:[{"$gt":["$tripduration:1200]},{$eq:{$$start station id, $end station id}}]})
 
-MQL syntax vs Aggregation Sysntax: 
-  {field:{$operator:value}}  
-Expression:
-  {$operator:{field:value}}
+# MQL syntax vs Aggregation Sysntax: 
+####  {field:{$operator:value}}  
+####   Expression:
+####  {$operator:{field:value}}
 
-## Searching an element inside the Array.
- db.companies.find({"ameneties":["Tv","Internet","Wifi"]})
- This will search the elements exact element's matching the above order.
-  
- db.companies.find({"ameneties":{$all:["Tv","Internet","Wifi"]}})
- This will search all the elments without coniderig the order.
-  
- ## To limit the array length
-  $size:20
+# Searching an element inside the Array.
+
+#### db.listingsAndReviews.find({"ameneties":["TV","Internet","Wifi"]})
+#### Above String will return search results exactly matching criteria and it's case sensitive.
+
+####  $all : Default search criteria only mathches the search string following the same order, where as when we declare the order:all it matches across all the elements irrespective of the order.
+  ## db.listingsAndReviews.find({"amenities":{$all:["TV","Internet","Wifi"]}})
+#### This will search the elements exact element's matching the above order provided in the array.
+#### This will search all the elments without coniderig the order.
+## $size: this is used to restrict or limit the size of the array.
+
+$size:20 This will limit the fields to only 20 fields.
   
  #### The below query maps the search results to 40 + document's with amenities more than 15+ fields Searh string is specified in the array.
  ####  This is matched to the search criteria specified in the array and results multiple values.
  ####  Size maps to the length of the fields and display's
-**  db.listingsAndReviews.find({amenities:{"$size":10,"$all": ['TV', 'Cable TV', 'Wifi']}}).count()
+  db.listingsAndReviews.find({amenities:{"$size":10,"$all": ['TV', 'Cable TV', 'Wifi']}}).count()
   
- Find the amenities who value is wifi and find out the only fields roomtype and address columns. 
+#### Find the amenities who value is wifi and find out the only fields roomtype and address columns. 
  db.listingsAndReviews.find({"amenities":"Wifi"},{"room_type":1,adderss:1})
  field:1 -> this will act as a projection to diplay the seleced columns.
 
