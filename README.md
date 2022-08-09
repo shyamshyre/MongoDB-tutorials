@@ -129,7 +129,15 @@ Examples:
 Exception only in case of id, else we cannot have both 0's and 1 in the same collection.
 3. db.collection.find({amenities:{''},{field1:1,_id:0)
 
+## elemMatch:- This is used to result or match the sub document's inide the array.
+Example we have a class, and we have students inside them and they have scores of various exam's and if we want to filter out the scores of students who marks are greater than 80.
+  
+db.grades.find({"class_id":431},{"scores":{"$elemMatch":{"score":{"$gt":80}}}})
 
+  
+  
+  
+  
 
 
 
