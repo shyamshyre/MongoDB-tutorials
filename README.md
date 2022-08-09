@@ -119,8 +119,8 @@ $size:20 This will limit the fields to only 20 fields.
 
 # Projection's helps you to find the data fields exclusively inside the collections.
 #### Note: While using projections ensure that you are not 
-## 0- this will disbale the field appearing in the result.
-## 1- this will enable/show the field as apart of the result.
+## 0- this will exclude the field appearing in the result.
+## 1- this will inlcude the field as apart of the result.
 ## 0,1-> We cannout use both 0 and 1 at the same time, We can only use this if we are using id column.
 
 Examples:
