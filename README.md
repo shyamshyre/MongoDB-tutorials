@@ -147,6 +147,10 @@ db.companies.find({"$expr":{"$eq":["$permalink","$twitter_username"]}}).count()
   
 ### {arrayfield:{$size:{10}} : returns value's with all the fields matching exactly length
   
+### Example: Using the sample_airbnb.listingsAndReviews collection find out how many documents have the "property_type" "House", and include "Changing table" as one of the "amenities"?
+#### db.listingsAndReviews.find({$and:[{"property_type":"House"},{"amenities":{"$all":["Changing table"]}}]}).count() ->11
+  
+  
   
  
 
