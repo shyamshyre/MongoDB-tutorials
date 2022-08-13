@@ -166,8 +166,9 @@ db.companies.find({"$expr":{"$eq":["$permalink","$twitter_username"]}}).count()
   
 ### Problem:
 ### Which of the following queries will return the names and addresses of all listings from the sample_airbnb.listingsAndReviews collection where the first amenity in the list is "Internet"?  
-#### db.listingsAndReviews.find({ "amenities.0": "Internet" },
-                           { "name": 1, "address": 1 }).pretty()
+#### db.listingsAndReviews.find({ "amenities.0": "Internet" },{ "name": 1, "address": 1 }).pretty()
+
+# Mongodb Aggregation Framework
   
 
 
