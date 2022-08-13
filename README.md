@@ -76,7 +76,7 @@ How many companies in the sample_training.companies dataset were either founded 
 [and] also either have the social category_code [or] web category_code?
  
 db.companies.find({$or:[{$and:[{"founded_year":2004},{$or:[{"category_code":"web"},{"category_code":"social"}]}]},{$and:[{"founded_month":10},{$or:[{"category_code":"web"},{"category_code":"social"}]}]}]})
-  
+db.companies.find({$or:[{"$and":[{"founded_year":2004},{"$or":[{"category_code":"social"},{"category_code":"web"}]}]},{"$and":[{"founded_year":2004},{"$or":[{"category_code":"social"},{"category_code":"web"}]}]}]}).count() 
   
 $expr:- Expression : allows the aggregation expressions within the query language.
 {$expr:{<expression>}}
@@ -131,8 +131,24 @@ Exception only in case of id, else we cannot have both 0's and 1 in the same col
 
 ## $elemMatch:- This is used to result or match the sub document's inside the array.
 Example we have a class, and we have students inside them and they have scores of various exam's and if we want to filter out the scores of students who marks are greater than 80.
-  
+
+### The below is the usage of the elemMatch as projection.
 db.grades.find({"class_id":431},{"scores":{"$elemMatch":{"score":{"$gt":80}}}})
+ 
+### The below is the usage of the elemMatch as projection.
+db.grades.find({"class_id":431},{"scores":{"$elemMatch":{"score":{"$gt":80}}}})
+  
+## The below query will return the data of matching fiels and their respective values.(Column 1 =Column2)
+### How many companies in the sample_training.companies collection have the same permalink as their twitter_username?
+db.companies.find({"$expr":{"$eq":["$permalink","$twitter_username"]}}).count()
+  
+## Array Operators:
+### {arrayfield:{$size:{10}} : returns value's with all the fields matching exactly length
+  
+### {arrayfield:{$size:{10}} : returns value's with all the fields matching exactly length
+  
+  
+ 
 
   
   
