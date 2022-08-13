@@ -155,9 +155,14 @@ db.companies.find({"$expr":{"$eq":["$permalink","$twitter_username"]}}).count()
  ### How many companies in the sample_training.companies collection have offices in the city of Seattle?
  #### db.companies.find({ "offices": { "$elemMatch": { "city": "Seattle" } } }).count() ->117 
   
- 
+ ##  Querying Arrays and Sub-Documents
+#### How many trips in the sample_training.trips collection started at stations that are to the west of the -74 longitude coordinate?
+#### Longitude decreases in value as you move west.
 
-  
+#### Note: We always list the longitude first and then latitude in the coordinate pairs; i.e.
+
+#### <field_name>: [ <longitude>, <latitude> ]
+####   db.trips.find({ "start station location.coordinates.0": { "$lt": -74 }}).count()
   
   
   
