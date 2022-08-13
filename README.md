@@ -150,7 +150,10 @@ db.companies.find({"$expr":{"$eq":["$permalink","$twitter_username"]}}).count()
 ### Example: Using the sample_airbnb.listingsAndReviews collection find out how many documents have the "property_type" "House", and include "Changing table" as one of the "amenities"?
 #### db.listingsAndReviews.find({$and:[{"property_type":"House"},{"amenities":{"$all":["Changing table"]}}]}).count() ->11
   
-  
+
+ ## Arrays & Projections
+ ### How many companies in the sample_training.companies collection have offices in the city of Seattle?
+ #### db.companies.find({ "offices": { "$elemMatch": { "city": "Seattle" } } }).count() ->117 
   
  
 
