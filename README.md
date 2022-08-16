@@ -199,7 +199,10 @@ limit(10)- > Filters top 10 records of the resultabt data.
   
 ### db.zips.find().sort({"pop":1}, {"city":-1}).limit(10) 
   
-  
+### Youngest Bike driver born.
+db.trips.find({"birth year": {"$ne": '' }}).sort({"birth year": -1}).limit(1)
+
+
   
  
 
