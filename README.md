@@ -184,4 +184,23 @@ Atlas atlas-j3efog-shard-0 [primary] sample_airbnb> db.listingsAndReviews.aggreg
   { _id: 'Private room', count: 1983 }
 ]
 
+# Sort limit
+## Sort is used for sorting the data.
+### -1 -> Sort the data in descending order.
+### 1 -> Sort the data in ascending order.  
+  
+Limit -> used for limiting the resultset of the data.
+limit(10)- > Filters top 10 records of the resultabt data.
+  
+### db.zips.find().sort({"pop":1}).limit(10) 
+## Above query will resturn top 10 records of data sorted in ascending order.
+  
+## We can have sorting of data by multiple fields.
+  
+### db.zips.find().sort({"pop":1}, {"city":-1}).limit(10) 
+  
+  
+  
+ 
 
+  
