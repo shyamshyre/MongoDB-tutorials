@@ -174,15 +174,14 @@ db.listingsAndReviews.aggregate({$group:{_id:"$room_type"}})
 ## Group all the data by room type and sum up the count.
 db.listingsAndReviews.aggregate({$group:{_id:"$room_type", "count":{"$sum":1}}})
 
-# Sort limit -> Sort is used for sorting the data.
+# Sort limit -> Sort is used for sorting the data , Limit -> used for limiting the resultset of the data..
 ####  -1 -> Sort the data in descending order.
 ####  1 -> Sort the data in ascending order.  
+ 
+##### limit(10)- > Filters top 10 records of the resultabt data.
   
-## Limit -> used for limiting the resultset of the data.
-#### limit(10)- > Filters top 10 records of the resultabt data.
-  
-### db.zips.find().sort({"pop":1}).limit(10) 
-## Above query will resturn top 10 records of data sorted in ascending order.
+##### db.zips.find().sort({"pop":1}).limit(10) 
+##### Above query will resturn top 10 records of data sorted in ascending order.
   
 ## We can have sorting of data by multiple fields.
   
