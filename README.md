@@ -78,8 +78,7 @@ How many companies in the sample_training.companies dataset were either founded 
 db.companies.find({$or:[{$and:[{"founded_year":2004},{$or:[{"category_code":"web"},{"category_code":"social"}]}]},{$and:[{"founded_month":10},{$or:[{"category_code":"web"},{"category_code":"social"}]}]}]})
 db.companies.find({$or:[{"$and":[{"founded_year":2004},{"$or":[{"category_code":"social"},{"category_code":"web"}]}]},{"$and":[{"founded_year":2004},{"$or":[{"category_code":"social"},{"category_code":"web"}]}]}]}).count() 
   
-# $expr:- Expression : allows the aggregation expressions within the query language.
-# {$expr:{<expression>}}
+# $expr:- Expression : allows the aggregation expressions within the query language. {$expr:{<expression>}}
   
 Find the totalnumber of trips where the source and destination points are same and who have reneted bike less than 100 seconds.
 Approach 1 
