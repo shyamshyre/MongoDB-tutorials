@@ -194,8 +194,8 @@ db.listingsAndReviews.aggregate({$group:{_id:"$room_type", "count":{"$sum":1}}})
 ###### db.trips.find({"birth year": {"$ne": '' }}).sort({"birth year": -1}).limit(1)
 
 # Indexing is used for faster fetching of data.
-## Indexing cab be created on multiple fields, this will help in faster fetching of data.
-## db.trips.createIndex({"birth_year":1});
+#####  Indexing cab be created on multiple fields, this will help in faster fetching of data.
+######  db.trips.createIndex({"birth_year":1});
 
 
   
