@@ -169,20 +169,11 @@ db.companies.find({"$expr":{"$eq":["$permalink","$twitter_username"]}}).count()
 #### db.listingsAndReviews.find({ "amenities.0": "Internet" },{ "name": 1, "address": 1 }).pretty()
 
 # Mongodb Aggregation Framework
-### Group all the data by Room type.
+## Group all the data by Room type.
 db.listingsAndReviews.aggregate({$group:{_id:"$room_type"}})
-[
-  { _id: 'Shared room' },
-  { _id: 'Private room' },
-  { _id: 'Entire home/apt' }
-]
 
-Atlas atlas-j3efog-shard-0 [primary] sample_airbnb> db.listingsAndReviews.aggregate({$group:{_id:"$room_type", "count":{"$sum":1}}})
-[
-  { _id: 'Shared room', count: 83 },
-  { _id: 'Entire home/apt', count: 3489 },
-  { _id: 'Private room', count: 1983 }
-]
+## Group all the data by room type and sum up the count.
+db.listingsAndReviews.aggregate({$group:{_id:"$room_type", "count":{"$sum":1}}})
 
 # Sort limit
 ## Sort is used for sorting the data.
