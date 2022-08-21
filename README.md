@@ -192,9 +192,14 @@ db.listingsAndReviews.aggregate({$group:{_id:"$room_type", "count":{"$sum":1}}})
 ###### db.trips.find({"birth year": {"$ne": '' }}).sort({"birth year": -1}).limit(1)
 
 # Indexing is used for faster fetching of data., Indexing can be created on multiple fields, this will help in faster fetching of data.
-#####  db.trips.createIndex({"birth_year":1});
+####  db.trips.createIndex({"birth_year":1});
 
-
+# Upsert -> Update + Insert
+  1. By default Upset is set to false.
+  db.collection.updateOne({<query>}{update}{"upsert":true})
+  1. The above command will search the record
+  2. Checks for nay matches available, if any are found it updates the record.
+  3. if none matches it inserts the record.
   
  
 
