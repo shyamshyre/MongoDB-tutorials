@@ -200,7 +200,18 @@ db.listingsAndReviews.aggregate({$group:{_id:"$room_type", "count":{"$sum":1}}})
   1. The above command will search the record
   2. Checks for nay matches available, if any are found it updates the record.
   3. if none matches it inserts the record.
-  
  
-
+  
+Example
+db.iot.updateOne({ "sensor": r.sensor, "date": r.date,
+                   "valcount": { "$lt": 48 } },
+                         { "$push": { "readings": { "v": r.value, "t": r.time } },
+                        "$inc": { "valcount": 1, "total": r.value } },
+                 { "upsert": true })
+  
+The above example will look for sensor data and it checks whether the length of the reading are less than 48 or not, if less than 48 then it updates the array within the same document, else it will insert a new document.
+  
+  
+  
+  
   
